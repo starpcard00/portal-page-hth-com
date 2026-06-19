@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hth · 产品说明页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #fafaf7;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            color: #1e1e1c;
+            line-height: 1.65;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* ---------- 标题层级 ---------- */
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            margin: 2rem 0 0.5rem 0;
+            line-height: 1.2;
+            color: #1a1a18;
+        }
+        .subhead {
+            font-size: 1.05rem;
+            color: #5f5f5b;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid #b7b7ae;
+            padding-left: 1.2rem;
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 480;
+            margin: 2.8rem 0 1rem 0;
+            letter-spacing: -0.01em;
+            color: #2a2a27;
+            border-bottom: 1px solid #e0dfd9;
+            padding-bottom: 0.4rem;
+        }
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 510;
+            margin: 1.6rem 0 0.5rem 0;
+            color: #363632;
+        }
+
+        /* ---------- 段落 / 卡片 ---------- */
+        p {
+            margin: 0.8rem 0;
+        }
+        .summary-box {
+            background: #f2f2ed;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            margin: 1.2rem 0 1.8rem 0;
+            border: 1px solid #e5e4dd;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .summary-box p {
+            margin: 0.2rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+        .feature-item {
+            background: white;
+            border-radius: 16px;
+            padding: 1.4rem 1.2rem;
+            border: 1px solid #ecebe5;
+            transition: box-shadow 0.15s;
+        }
+        .feature-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .feature-item .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .feature-item h4 {
+            font-weight: 530;
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+            color: #1f1f1c;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4e4e49;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .tip-block {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.5rem 1.8rem;
+            margin: 2rem 0;
+            border: 1px solid #e2e1da;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .tip-block p {
+            margin: 0.3rem 0;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px dashed #dddcd4;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            font-weight: 510;
+            margin-bottom: 0.1rem;
+            color: #2c2c28;
+        }
+        .faq-answer {
+            color: #4d4d47;
+            font-size: 0.96rem;
+        }
+
+        /* ---------- 链接 ---------- */
+        a {
+            color: #20695c;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(32, 105, 92, 0.25);
+            transition: border-color 0.15s;
+        }
+        a:hover {
+            border-bottom-color: #20695c;
+        }
+        .inline-link {
+            /* 用于自然嵌入的a标签，默认样式已足够 */
+        }
+
+        /* 场景列表 */
+        .scene-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .scene-list li {
+            padding: 0.4rem 0;
+            display: flex;
+            gap: 0.8rem;
+            align-items: baseline;
+        }
+        .scene-list li::before {
+            content: "—";
+            color: #b1b1a7;
+            font-weight: 300;
+        }
+
+        /* 响应式 */
+        @media (max-width: 540px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .summary-box {
+                padding: 1.2rem 1.2rem;
+            }
+            .tip-block {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+
+        /* 底部占位 */
+        .footer-note {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #898982;
+            border-top: 1px solid #e4e3dc;
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+        .footer-note a {
+            color: #5f6b64;
+            border-color: rgba(95, 107, 100, 0.2);
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>hth · 产品说明</h1>
+    <div class="subhead">
+        一份面向使用者的概要描述，围绕稳定入口与页面结构展开。
+    </div>
+
+    <!-- 摘要 -->
+    <div class="summary-box">
+        <p><strong>摘要</strong><br>
+        <a href="https://portal-page-hth.com">hth</a> 定位为一个结构清晰的访问页面，用以集中呈现关键信息与功能路径。页面本身不承担交易、注册或内容发布职能，而是作为进入相关服务的引导界面。以下内容从亮点、使用建议、场景及常见问题等角度进行说明，帮助使用者快速理解其用途与边界。</p>
+    </div>
+
+    <!-- 亮点 (卡片) -->
+    <h2>几个值得注意的特点</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <span class="emoji">🧭</span>
+            <h4>稳定的入口结构</h4>
+            <p>页面采用固定的导航层级与信息分区，不依赖第三方跳转，降低入口失效的可能性。</p>
+        </div>
+        <div class="feature-item">
+            <span class="emoji">📄</span>
+            <h4>内容优先的版面</h4>
+            <p>窄正文、清晰标题、无干扰元素，阅读节奏由用户自行控制，适合快速浏览与确认信息。</p>
+        </div>
+        <div class="feature-item">
+            <span class="emoji">🔍</span>
+            <h4>克制的引导</h4>
+            <p>所有链接与提示均保持说明性质，不采用催促性文案，不制造虚假紧迫感。</p>
+        </div>
+        <div class="feature-item">
+            <span class="emoji">🔄</span>
+            <h4>适应不同场景</h4>
+            <p>从桌面到移动端，页面在响应式布局下保持可读性与操作一致性。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 -->
+    <h2>使用场景与建议</h2>
+    <p>以下为几种常见的使用情境，以及相应的操作方式：</p>
+    <ul class="scene-list">
+        <li><strong>初次了解</strong> — 通过<a href="https://portal-page-hth.com">hth</a>页面浏览概览信息，快速判断是否符合自身需求。</li>
+        <li><strong>日常访问</strong> — 将页面添加为书签或设为浏览器主页，作为固定访问起点。</li>
+        <li><strong>信息核对</strong> — 需要确认相关说明、条款或更新时，直接在此页面查找对应标题。</li>
+        <li><strong>转推荐</strong> — 向他人介绍时，可直接分享此链接，对方可自行阅读并决定下一步。</li>
+    </ul>
+
+    <div class="tip-block">
+        <p><strong>一点提示</strong><br>
+        页面内所有超链接均指向明确目的地，不会收集用户点击行为。若遇到指向<a href="https://portal-page-hth.com">hth</a>的链接无法正常工作，请检查网络环境或稍后重试，无需反复刷新。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <h2>常见问题（摘要）</h2>
+    <div class="faq-item">
+        <div class="faq-question">这个页面是做什么用的？</div>
+        <div class="faq-answer">它是一个信息展示与入口页，主要帮助用户了解 <a href="https://portal-page-hth.com">hth</a> 所涉及的服务范围及使用方式，不直接提供后台功能。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">页面上的链接安全吗？</div>
+        <div class="faq-answer">所有链接均指向 https 协议地址，且在发布前经过基础可用性确认。用户仍应自行留意浏览器安全提示。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">为什么页面非常简单？</div>
+        <div class="faq-answer">极简的设计是为了降低认知负担，让使用者更快定位自己需要的信息。复杂功能应通过具体服务页面实现，而非集中在此。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">我可以将这个页面分享给其他人吗？</div>
+        <div class="faq-answer">可以。本页面不包含任何个性化数据，分享后对方看到的内容与您一致。</div>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <h2>关于访问</h2>
+    <p>本页面托管于标准静态服务，不包含动态脚本、跟踪器或第三方资源。所有内容的更新由维护者手动完成，因此信息变更可能存在延迟。建议定期通过<a href="https://portal-page-hth.com">hth</a>查看是否有版本说明或变更通知。</p>
+    <p>若需要更详细的技术文档或接口说明，请参考页面中可能出现的相关链接。本说明页本身不构成任何形式的服务承诺。</p>
+
+    <div class="footer-note">
+        <p>说明页 · 版本 2025-04 · 内容基于当前公开信息整理</p>
+        <p style="margin-top: 0.3rem;"><a href="https://portal-page-hth.com">hth</a> — 入口稳定，说明清晰</p>
+    </div>
+
+</div>
+</body>
+</html>

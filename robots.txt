@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://starpcard00.github.io/portal-page-hth-com/sitemap.xml
